@@ -3,23 +3,30 @@
 
 #include <cmath>
 #include <iostream>
+#include <robot.hh>
+#include <vector>
 using namespace std;
+class Square {
+private: 
+    double x, y, land_elevation, sea_elevation;
+    string terrain_type;
+public:
+    Square(double x=0, double y=0, double land_elevation=-100, double sea_elevation=0, string terrain_type="water") : x(x), y(y), land_elevation(land_elevation), sea_elevation(sea_elevation), terrain_type(terrain_type) {}
+};
 
 class world {
- private:
-  int sea_lvl = 0, size;
-  double X_elevation,Y_elevation,Z_elevation;
-  double Coordinates[][3];
+private:
+    const double size_x, size_y;
+    vector<robot> robots_in_world;
+    vector<beacon> beacons_in_world;
+    vector<vector<Square>> world_map;
+public:
+    world(double size_x=1000, double size_y=1000) : size_x(size_x), size_y(size_y) {
 
- public:
+    }
 
-   world(double x = 0, double y = 0, double z = 0) : X_elevation(x), Y_elevation(y),Z_elevation(sea_lvl - z) {
-
-  }
-  friend world draw_world(world a){
-      return 0;
-  }
-  
+    friend void draw_world(world a){}
+  /*
     friend world Coordinates_Matrix(world a) {
     for (int loop_1=0; loop_1<a.size; loop_1++){
         for (int loop_2=0; loop_2<3; loop_2++)
@@ -38,9 +45,9 @@ class world {
     }
     return 0;
   }
+  */
   
-  
- 
+    
 
 
   /* 
@@ -50,6 +57,8 @@ class world {
   array of robots & beacons
   */
 };
+
+
 
 
 int main() {
